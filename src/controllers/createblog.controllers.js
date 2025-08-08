@@ -4,7 +4,6 @@ import { Blog } from "../models/blog.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { fileuploader } from "../utils/cloudinary.js";
 import { deleteFile } from "../utils/cloudinary.js";
-import blog from "../Routes/blog.routes.js";
 
 const CreateBlog = asynchandler(async (req, res) => {
   const { title, tags, auther = "Sysvon Editorial Team", sections } = req.body;
