@@ -10,14 +10,7 @@ const __dirname = path.dirname(__filename);
 const allowedOrigins = process.env.CORS_ORIGIN.split(",");
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // allow tools like Postman
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
   })
 );
