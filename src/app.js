@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
 
-// For ES modules, get __dirname
-
-// CORS setup
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const allowedOrigins = process.env.CORS_ORIGIN.split(",");
 app.use(
   cors({
@@ -38,11 +38,12 @@ app.use("/api/v1/blog", blog);
 app.use("/api/v1/contact", Contact);
 app.use("/api/v1/subscriber", subscriber);
 
-// Serve React frontend (built admin panel)
+app.use(express.static(path.join(__dirname, "../admin-panel/dist")));
 
-// Catch-all handler for SPA frontend routes
-
-// Optional: root route for API check
+// Serve React admin panel for any route NOT starting with /api
+app.get(/^\/(?!api\/).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../admin-panel/dist/index.html"));
+});
 app.get("/", (req, res) => {
   res.send("API is running");
 });
