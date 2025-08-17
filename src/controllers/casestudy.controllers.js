@@ -37,8 +37,8 @@ const deleteCase = asynchandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "request deleted sucussfully"));
 });
 const getAllCase = asynchandler(async (req, res) => {
-  const allContact = await Case.find();
-  if (!allContact) {
+  const allCase = await Case.find();
+  if (!allCase) {
     throw new ApiError(
       401,
       "something went wrong while fetching the requested casestudy"
