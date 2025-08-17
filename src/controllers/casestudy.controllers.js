@@ -19,11 +19,11 @@ const createCase = asynchandler(async (req, res) => {
     company,
   });
   if (!newCase) {
-    throw new ApiError(401, "something went wrong while  contacting");
+    throw new ApiError(401, "something went wrong while requesting ");
   }
   return res
     .status(200)
-    .json(new ApiResponse(200, { newCase }, "contact is created sucussfully"));
+    .json(new ApiResponse(200, { newCase }, "request  is created sucussfully"));
 });
 const deleteCase = asynchandler(async (req, res) => {
   const { id } = req.params;
@@ -33,16 +33,25 @@ const deleteCase = asynchandler(async (req, res) => {
   }
   return res
     .status(200)
-    .json(new ApiResponse(200, {}, "contact deleted sucussfully"));
+    .json(new ApiResponse(200, {}, "request deleted sucussfully"));
 });
 const getAllCase = asynchandler(async (req, res) => {
   const allContact = await Case.find();
   if (!allContact) {
-    throw new ApiError(401, "something went wrong while fetching the contacts");
+    throw new ApiError(
+      401,
+      "something went wrong while fetching the requested casestudy"
+    );
   }
   return res
     .status(200)
-    .json(new ApiResponse(200, getAllCase, "all contact fetched sucussfully"));
+    .json(
+      new ApiResponse(
+        200,
+        getAllCase,
+        "all request case studies  fetched sucussfully"
+      )
+    );
 });
 
 export { createCase, getAllCase, deleteCase };

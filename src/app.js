@@ -7,7 +7,7 @@ const allowedOrigins = process.env.CORS_ORIGIN.split(",").map((o) => o.trim());
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // allow tools like Postman
+      if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -29,7 +29,6 @@ import Contact from "./Routes/contactus.routes.js";
 import subscriber from "./Routes/subs.routes.js";
 import Case from "./Routes/casestudy.routes.js";
 
-// API routes
 app.use("/api/v1/users", user);
 app.use("/api/v1/blog", blog);
 app.use("/api/v1/contact", Contact);
