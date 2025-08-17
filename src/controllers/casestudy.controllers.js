@@ -3,15 +3,16 @@ import { ApiError } from "../utils/apierrors.js";
 import { Case } from "../models/casestudy.modal.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 const createCase = asynchandler(async (req, res) => {
-  const { firstname, jobtitle, lastname, email, company } = req.body;
+  const { firstname, jobtitle, lastname, email, company, slug } = req.body;
   if (
-    [firstname, jobtitle, email, lastname, company].some(
+    [firstname, jobtitle, email, lastname, company, slug].some(
       (fields) => fields?.trim() === ""
     )
   ) {
     throw new ApiError(400, "All the fields are required ");
   }
   const newCase = await Case.create({
+    slug,
     firstname,
     jobtitle,
     email,

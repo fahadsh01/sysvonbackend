@@ -23,6 +23,9 @@ const caseSchema = new Schema(
     lastname: {
       type: String,
     },
+    slug: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
