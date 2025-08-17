@@ -27,12 +27,14 @@ import user from "./Routes/user.routes.js";
 import blog from "./Routes/blog.routes.js";
 import Contact from "./Routes/contactus.routes.js";
 import subscriber from "./Routes/subs.routes.js";
+import Case from "./Routes/casestudy.routes.js";
 
 // API routes
 app.use("/api/v1/users", user);
 app.use("/api/v1/blog", blog);
 app.use("/api/v1/contact", Contact);
 app.use("/api/v1/subscriber", subscriber);
+app.use("/api/v1/case", Case);
 
 app.get("/", (req, res) => {
   res.send("API is running");
